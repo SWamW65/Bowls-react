@@ -43,7 +43,7 @@ services:
       - bowls-react_network
 
   pgadmin:
-    image: dpage/pgadmin4
+    image: dpage/pgadmin4:latest
     container_name: bowls-react_pgadmin
     depends_on:
       db:
@@ -66,7 +66,7 @@ services:
       db:
         condition: service_healthy
     environment:
-      DATABASE_URL: postgresql://postgres:samlink@db:5432/bowls
+      DATABASE_URL: postgresql://postgres:samlink@bowls-react_postgres:5432/bowls
       SQLALCHEMY_POOL_RECYCLE: 3600
       SQLALCHEMY_POOL_TIMEOUT: 30
     volumes:
