@@ -1,0 +1,104 @@
+services:
+  frontend:
+    container_name: bowls-react_frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "5173:5173"  # Vite dev server
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    environment:
+      - VITE_API_URL=http://localhost:8000/api
+    command: npm run dev -- --host
+    healthcheck: # Добавляем healthcheck для фронтенда
+      test: [ "CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:5173/" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    networks:
+      - bowls-react_network
+
+  db:
+    image: postgres:13
+    container_name: bowls-react_postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: samlink
+      POSTGRES_DB: bowls
+    command: ["postgres", "-c", "listen_addresses=0.0.0.0"] # ограничиваем для безопасности только локальные вызовы вместо дефолтного 127.0.0.1
+#    command: ["postgres", "-c", "listen_addresses=*"] # любые могут обратиться, оставим на всякий, но менее безопасно
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d bowls"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    networks:
+      - bowls-react_network
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: bowls-react_pgadmin
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@bowls.com
+      PGADMIN_DEFAULT_PASSWORD: admin123
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+    ports:
+      - "5050:80"
+    restart: unless-stopped
+    networks:
+      - bowls-react_network
+
+  backend:
+    build: ./backend
+    container_name: bowls-react_backend
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql://postgres:samlink@db:5432/bowls
+      SQLALCHEMY_POOL_RECYCLE: 3600
+      SQLALCHEMY_POOL_TIMEOUT: 30
+    volumes:
+      - ./backend/app:/app
+    ports:
+      - "8000:8000"
+    healthcheck: # Добавьте healthcheck для backend
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8000/docs"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    restart: unless-stopped
+    networks:
+      - bowls-react_network
+
+  nginx:
+    build: ./nginx
+    container_name: bowls-react_nginx
+    depends_on:
+      - backend  # Убираем condition
+      - frontend
+    ports:
+      - "80:80"
+    restart: unless-stopped
+    networks:
+      - bowls-react_network
+
+volumes:
+  postgres_data:
+  pgadmin_data:
+
+networks:
+  bowls-react_network:
+    driver: bridge
