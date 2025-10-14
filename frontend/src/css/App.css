@@ -1,0 +1,22 @@
+.wrapper {
+    max-width: 768px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+.content-box {
+    display: flex;
+    justify-content: center;
+    padding: 0 15px;
+}
+.setting-block {
+    position: relative;
+    width: 100%;
+    margin: 10px 0;
+}
+.form-submit {
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}

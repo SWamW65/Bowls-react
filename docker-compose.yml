@@ -10,7 +10,8 @@ services:
       - ./frontend:/app
       - /app/node_modules
     environment:
-      - VITE_API_URL=http://localhost:8000/api
+      - CHOKIDAR_USEPOLLING=true
+      - VITE_API_URL=http://localhost:8000/api  # ОБНОВИТЕ порт
     command: npm run dev -- --host
     healthcheck: # Добавляем healthcheck для фронтенда
       test: [ "CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:5173/" ]
@@ -66,20 +67,22 @@ services:
       db:
         condition: service_healthy
     environment:
-      DATABASE_URL: postgresql://postgres:samlink@db:5432/bowls
-      SQLALCHEMY_POOL_RECYCLE: 3600
-      SQLALCHEMY_POOL_TIMEOUT: 30
+        DATABASE_URL: postgresql://postgres:samlink@db:5432/bowls
     volumes:
       - ./backend/app:/app
     ports:
       - "8000:8000"
-    healthcheck: # Добавьте healthcheck для backend
-      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8000/docs"]
+    command: >
+      sh -c "sleep 10 && python main.py"
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
       interval: 30s
       timeout: 10s
       retries: 3
       start_period: 40s
-    restart: unless-stopped
     networks:
       - bowls-react_network
 
@@ -87,8 +90,10 @@ services:
     build: ./nginx
     container_name: bowls-react_nginx
     depends_on:
-      - backend  # Убираем condition
-      - frontend
+      backend:
+        condition: service_healthy
+      frontend:
+        condition: service_healthy
     ports:
       - "80:80"
     restart: unless-stopped
@@ -97,7 +102,9 @@ services:
 
 volumes:
   postgres_data:
+    driver: local
   pgadmin_data:
+    driver: local
 
 networks:
   bowls-react_network:
