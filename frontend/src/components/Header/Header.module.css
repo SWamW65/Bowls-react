@@ -1,0 +1,20 @@
+.headerblock {
+    padding: 10px 0 0 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.headertext {
+    font-weight: 700;
+    font-size: 2em;
+}
+.headernav {
+    display: flex;
+    align-items: center;
+
+}
+.headernav ul {
+    display: flex;
+    gap: 1em;
+}

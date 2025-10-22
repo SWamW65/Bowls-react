@@ -1,6 +1,8 @@
 import logging
 from typing import List
 
+from click.testing import Result
+
 logger = logging.getLogger(__name__)
 
 from datetime import datetime
@@ -16,9 +18,16 @@ from tables import ProductDB
 
 from sqlalchemy.exc import SQLAlchemyError
 from fastapi import HTTPException, status
-import logging
+from fastapi.responses import JSONResponse
 
 router = APIRouter(prefix="/api")
+
+@router.get("/health")
+async def health_check():
+    return JSONResponse(
+        content={"status": "healthy", "service": "backend"},
+        status_code=200
+    )
 
 @router.post("/submit", response_model=ProductResponse)
 async def sendproduct(product: ProductCreate, db: Session = Depends(get_db)):
@@ -45,7 +54,7 @@ async def sendproduct(product: ProductCreate, db: Session = Depends(get_db)):
         )
         
 @router.get("/get-current-month", response_model=List[DailySummeryResponse])
-def productget(db: Session = Depends(get_db)):
+def productmonthget(db: Session = Depends(get_db)):
     today = datetime.now()
 
     daily_summery = (db.query(
@@ -67,6 +76,21 @@ def productget(db: Session = Depends(get_db)):
         )
         for summary_row in daily_summery
     ]
+
+    return result
+
+@router.get("/get-for-day", response_model=List[ProductResponse])
+def productdayget(db: Session = Depends(get_db)):
+    product_day = (db.query(
+        ProductDB.date,
+        ProductDB.quantity,
+        ProductDB.price,
+        ProductDB.name
+    ).group_by(
+        ProductDB.date
+    ).order_by(
+        ProductDB.date.desc()).all())
+    result = product_day
 
     return result
 

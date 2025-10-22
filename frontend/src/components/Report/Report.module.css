@@ -1,0 +1,40 @@
+
+.reportcontainer {
+    padding: 5px 0;
+}
+.dateblock {
+    padding: 5px 0;
+}
+
+/* TABLE */
+.reportcontainer table {
+    max-width: 100%;
+}
+
+.reportcontainer table,
+.reportcontainer thead {
+    font-size: 1em;
+}
+.reportcontainer table th,
+.reportcontainer table td {
+    padding: 2px 0;
+}
+.reportcontainer thead tr {
+    color: #555;
+}
+.reportcontainer tbody tr:nth-child(even) {
+    background-color: #f1f1f1;
+}
+.reportcontainer tbody tr:hover {
+    background-color: #e2e2e2;
+}
+.reportcontainer th:nth-child(1) {
+    width: 33%;
+}
+.reportcontainer th:nth-child(2) {
+    width: 100px;
+}
+.reportcontainer th:nth-child(3) {
+    width: 200px;
+}
+/* TABLE */
