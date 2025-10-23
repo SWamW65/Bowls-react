@@ -56,6 +56,7 @@ body {
     min-height: 100vh;
 }
 .wrapper {
+    position: relative;
     max-width: 768px;
     margin: 0 auto;
     padding: 0 10px;
@@ -65,24 +66,4 @@ body {
 h1 {
     font-size: 3.2em;
     line-height: 1.1;
-}
-
-button {
-    border-radius: 8px;
-    border: 1px solid transparent;
-    padding: 0.6em 1.2em;
-    color: #f9f9f9;
-    font-size: 1em;
-    font-weight: 500;
-    font-family: inherit;
-    background-color: #434343;
-    cursor: pointer;
-    transition: all .5s;
-}
-button:hover {
-    opacity: .3;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
 }

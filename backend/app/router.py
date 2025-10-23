@@ -1,11 +1,9 @@
 import logging
 from typing import List
 
-from click.testing import Result
-
 logger = logging.getLogger(__name__)
 
-from datetime import datetime
+from datetime import datetime, date
 from sqlalchemy import extract, func
 
 from fastapi import APIRouter
@@ -30,7 +28,7 @@ async def health_check():
     )
 
 @router.post("/submit", response_model=ProductResponse)
-async def sendproduct(product: ProductCreate, db: Session = Depends(get_db)):
+async def send_product(product: ProductCreate, db: Session = Depends(get_db)):
     try:
         db_product = ProductDB(
             name=product.name,
@@ -54,7 +52,7 @@ async def sendproduct(product: ProductCreate, db: Session = Depends(get_db)):
         )
         
 @router.get("/get-current-month", response_model=List[DailySummeryResponse])
-def productmonthget(db: Session = Depends(get_db)):
+def product_month_get(db: Session = Depends(get_db)):
     today = datetime.now()
 
     daily_summery = (db.query(
@@ -79,18 +77,20 @@ def productmonthget(db: Session = Depends(get_db)):
 
     return result
 
-@router.get("/get-for-day", response_model=List[ProductResponse])
-def productdayget(db: Session = Depends(get_db)):
-    product_day = (db.query(
-        ProductDB.date,
-        ProductDB.quantity,
-        ProductDB.price,
-        ProductDB.name
-    ).group_by(
-        ProductDB.date
-    ).order_by(
-        ProductDB.date.desc()).all())
-    result = product_day
+@router.get("/get-for-day/{selected_date}", response_model=List[ProductResponse])
+def product_day_get(selected_date: date, db: Session = Depends(get_db)):
+    try:
+        products = db.query(ProductDB).filter(
+            ProductDB.date == selected_date
+        ).order_by(
+            ProductDB.id.desc()
+        ).all()
 
-    return result
+        return products
 
+    except SQLAlchemyError as e:
+        logger.error(f"Ошибка базы данных: {str(e)}")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Ошибка получения данных из базы данных"
+        )

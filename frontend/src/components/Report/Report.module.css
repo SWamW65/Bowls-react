@@ -1,40 +1,65 @@
 
 .reportcontainer {
-    padding: 5px 0;
+    width: 100%;
+    padding: 5px 0 20px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
 }
 .dateblock {
     padding: 5px 0;
 }
 
-/* TABLE */
-.reportcontainer table {
-    max-width: 100%;
+.dateButton {
+    background: none;
+    border: none;
+    color: #007bff;
+    text-decoration: underline;
+    cursor: pointer;
+    padding: 0;
+    font: inherit;
+    transition: all .5s;
 }
 
-.reportcontainer table,
-.reportcontainer thead {
+.dateButton:hover {
+    opacity: .3;
+}
+
+.reportContent {
+    display: flex;
+    justify-content: center;
+}
+
+/* TABLE */
+.reportContent table {
+    max-width: 400px;
+}
+
+.reportContent table,
+.reportContent thead {
     font-size: 1em;
 }
-.reportcontainer table th,
-.reportcontainer table td {
+.reportContent table th,
+.reportContent table td {
     padding: 2px 0;
 }
-.reportcontainer thead tr {
+.reportContent thead tr {
     color: #555;
 }
-.reportcontainer tbody tr:nth-child(even) {
+.reportContent tbody tr:nth-child(even) {
     background-color: #f1f1f1;
 }
-.reportcontainer tbody tr:hover {
+.reportContent tbody tr:hover {
     background-color: #e2e2e2;
 }
-.reportcontainer th:nth-child(1) {
+.reportContent th:nth-child(1) {
     width: 33%;
 }
-.reportcontainer th:nth-child(2) {
+.reportContent th:nth-child(2) {
     width: 100px;
 }
-.reportcontainer th:nth-child(3) {
+.reportContent th:nth-child(3) {
     width: 200px;
 }
 /* TABLE */

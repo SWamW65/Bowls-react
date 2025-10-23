@@ -1,0 +1,94 @@
+.dialog {
+    top: 10px;
+    border: none;
+    border-radius: 8px;
+    padding: 0;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+
+}
+
+.dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.dialogContent {
+    padding: 0;
+}
+
+.dialogHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 20px 0 20px;
+    margin-bottom: 20px;
+}
+
+.dialogHeader h2 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.closeBtn {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #3f4698;
+    border-radius: 50%;
+    width: 1.6em;
+    height: 1.6em;
+    transition: all .2s;
+    cursor: pointer;
+}
+.closeBtn::after {
+    content: '';
+    display: flex;
+    position: absolute;
+    width: 1em;;
+    height: 1px;
+    background-color: #3f4698;
+    rotate: 45deg;
+}
+.closeBtn::before {
+    content: '';
+    display: flex;
+    position: absolute;
+    width: 1em;
+    height: 1px;
+    background-color: #3f4698;
+    rotate: 135deg;
+}
+.closeBtn:hover {
+    opacity: .3;
+}
+
+.dialogBody {
+    padding: 0 20px 20px 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.detailsTable {
+    width: 500px;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.detailsTable th,
+.detailsTable td {
+    padding: 5px 5px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.detailsTable th {
+    background-color: #f5f5f5;
+    font-weight: bold;
+}
+
+.detailsTable tr:hover {
+    background-color: #f9f9f9;
+}

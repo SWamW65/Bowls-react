@@ -4,19 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8788d325-0635-47a6-be54-0ae42518f585" name="Changes" comment="1) Сделал рендер полей отправки данных и кнопку.&#10;2) Данные отправляются на сервер&#10;3) Настроил прокси в vite.config, потому что запросы отправлялись не на порт бэкенда а на самого себя.">
+    <list default="true" id="8788d325-0635-47a6-be54-0ae42518f585" name="Changes" comment="1) Сделал роутер &#10;2) Данные рендерятся с таблицы как и раньше&#10;3) Сделал чтоб форма (&lt;Form /&gt;) грузилась при открытии страницы по умолчанию&#10;4) Перекинул стили из проекта чистого JS&#10;5) Настроил меню в шапке&#10;6) Написал запрос такой же как в JS только под реакт (с помощью DeepSeek, потому что сам нихуя не понимаю)&#10;7) Написал еще один эндпойнт для поручения данных за день, но написал неправильно потому что нихуя не понимаю.">
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/Report/DayDetailsModal.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/Report/DayDetailsModal.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/app/cd" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Report/Report.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/app/ls" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Report/Report.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/app/router.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/router.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Form/Form.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Form/Form.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/Form/Form.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Form/Form.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Header/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Header/Header.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Header/Header.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Header/Header.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/css/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/css/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Report/Report.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Report/Report.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Report/Report.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Report/Report.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/css/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/main.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,6 +76,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\itprojects\bowls\bowls-react\frontend\src\components\Report" />
       <recent name="C:\itprojects\bowls\bowls-react\frontend\src\css" />
     </key>
   </component>
@@ -110,7 +107,8 @@
       <workItem from="1760274970062" duration="1178000" />
       <workItem from="1760448976166" duration="12431000" />
       <workItem from="1760776807384" duration="1907000" />
-      <workItem from="1761142895258" duration="14440000" />
+      <workItem from="1761142895258" duration="14772000" />
+      <workItem from="1761215814663" duration="15208000" />
     </task>
     <task id="LOCAL-00001" summary="1) Сделал рендер полей отправки данных и кнопку.&#10;2) Данные отправляются на сервер&#10;3) Настроил прокси в vite.config, потому что запросы отправлялись не на порт бэкенда а на самого себя.">
       <option name="closed" value="true" />
@@ -128,7 +126,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760777271502</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="1) Сделал роутер &#10;2) Данные рендерятся с таблицы как и раньше&#10;3) Сделал чтоб форма (&lt;Form /&gt;) грузилась при открытии страницы по умолчанию&#10;4) Перекинул стили из проекта чистого JS&#10;5) Настроил меню в шапке&#10;6) Написал запрос такой же как в JS только под реакт (с помощью DeepSeek, потому что сам нихуя не понимаю)&#10;7) Написал еще один эндпойнт для поручения данных за день, но написал неправильно потому что нихуя не понимаю.">
+      <option name="closed" value="true" />
+      <created>1761163512840</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1761163512840</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -140,6 +146,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="1) Сделал рендер полей отправки данных и кнопку.&#10;2) Данные отправляются на сервер&#10;3) Настроил прокси в vite.config, потому что запросы отправлялись не на порт бэкенда а на самого себя." />
-    <option name="LAST_COMMIT_MESSAGE" value="1) Сделал рендер полей отправки данных и кнопку.&#10;2) Данные отправляются на сервер&#10;3) Настроил прокси в vite.config, потому что запросы отправлялись не на порт бэкенда а на самого себя." />
+    <MESSAGE value="1) Сделал роутер &#10;2) Данные рендерятся с таблицы как и раньше&#10;3) Сделал чтоб форма (&lt;Form /&gt;) грузилась при открытии страницы по умолчанию&#10;4) Перекинул стили из проекта чистого JS&#10;5) Настроил меню в шапке&#10;6) Написал запрос такой же как в JS только под реакт (с помощью DeepSeek, потому что сам нихуя не понимаю)&#10;7) Написал еще один эндпойнт для поручения данных за день, но написал неправильно потому что нихуя не понимаю." />
+    <option name="LAST_COMMIT_MESSAGE" value="1) Сделал роутер &#10;2) Данные рендерятся с таблицы как и раньше&#10;3) Сделал чтоб форма (&lt;Form /&gt;) грузилась при открытии страницы по умолчанию&#10;4) Перекинул стили из проекта чистого JS&#10;5) Настроил меню в шапке&#10;6) Написал запрос такой же как в JS только под реакт (с помощью DeepSeek, потому что сам нихуя не понимаю)&#10;7) Написал еще один эндпойнт для поручения данных за день, но написал неправильно потому что нихуя не понимаю." />
   </component>
 </project>
