@@ -5,15 +5,15 @@ services:
       context: ./frontend
       dockerfile: Dockerfile
     ports:
-      - "5173:5173" # Vite dev server
+      - "5173:5173"
     volumes:
       - ./frontend:/app
       - /app/node_modules
     environment:
       - CHOKIDAR_USEPOLLING=true
-      - VITE_API_URL=http://localhost:8000/api # ОБНОВИТЕ порт
+      - VITE_API_URL=http://localhost:8000/api
     command: npm run dev -- --host
-    healthcheck: # Добавляем healthcheck для фронтенда
+    healthcheck:
       test:
         [
           "CMD",
@@ -37,8 +37,7 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: samlink
       POSTGRES_DB: bowls
-    command: ["postgres", "-c", "listen_addresses=0.0.0.0"] # ограничиваем для безопасности только локальные вызовы вместо дефолтного 127.0.0.1
-    #    command: ["postgres", "-c", "listen_addresses=*"] # любые могут обратиться, оставим на всякий, но менее безопасно
+    command: ["postgres", "-c", "listen_addresses=0.0.0.0"]
     volumes:
       - postgres_data:/var/lib/postgresql/data
     ports:
@@ -52,44 +51,44 @@ services:
       - bowls-react_network
 
   pgadmin:
-    image: dpage/pgadmin4
+    image: dpage/pgadmin4:latest
     container_name: bowls-react_pgadmin
-    depends_on:
-      db:
-        condition: service_healthy
     environment:
       PGADMIN_DEFAULT_EMAIL: admin@bowls.com
       PGADMIN_DEFAULT_PASSWORD: admin123
     volumes:
       - pgadmin_data:/var/lib/pgadmin
     ports:
-      - "5050:80"
+      - "8081:80" # Используем свободный порт 8081
     restart: unless-stopped
     networks:
       - bowls-react_network
+    stdin_open: true
+    tty: true
 
   backend:
     build: ./backend
     container_name: bowls-react_backend
-    depends_on:
-      db:
-        condition: service_healthy
     environment:
       DATABASE_URL: postgresql://postgres:samlink@db:5432/bowls
-      PYTHONUNBUFFERED: 1
     volumes:
       - ./backend/app:/app
     ports:
       - "8000:8000"
-    command: >
-      sh -c "sleep 10 && python main.py"
+    command: python -u main.py
     restart: unless-stopped
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
-      interval: 30s
+      test:
+        [
+          "CMD",
+          "python",
+          "-c",
+          "import requests; requests.get('http://localhost:8000/api/health', timeout=5).raise_for_status()",
+        ]
+      interval: 300s # Проверка раз в 5 минут
       timeout: 10s
-      retries: 3
-      start_period: 40s
+      retries: 1
+      start_period: 30s
     networks:
       - bowls-react_network
 
