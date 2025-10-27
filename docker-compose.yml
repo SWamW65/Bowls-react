@@ -5,16 +5,24 @@ services:
       context: ./frontend
       dockerfile: Dockerfile
     ports:
-      - "5173:5173"  # Vite dev server
+      - "5173:5173" # Vite dev server
     volumes:
       - ./frontend:/app
       - /app/node_modules
     environment:
       - CHOKIDAR_USEPOLLING=true
-      - VITE_API_URL=http://localhost:8000/api  # ОБНОВИТЕ порт
+      - VITE_API_URL=http://localhost:8000/api # ОБНОВИТЕ порт
     command: npm run dev -- --host
     healthcheck: # Добавляем healthcheck для фронтенда
-      test: [ "CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:5173/" ]
+      test:
+        [
+          "CMD",
+          "wget",
+          "--no-verbose",
+          "--tries=1",
+          "--spider",
+          "http://localhost:5173/",
+        ]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -30,7 +38,7 @@ services:
       POSTGRES_PASSWORD: samlink
       POSTGRES_DB: bowls
     command: ["postgres", "-c", "listen_addresses=0.0.0.0"] # ограничиваем для безопасности только локальные вызовы вместо дефолтного 127.0.0.1
-#    command: ["postgres", "-c", "listen_addresses=*"] # любые могут обратиться, оставим на всякий, но менее безопасно
+    #    command: ["postgres", "-c", "listen_addresses=*"] # любые могут обратиться, оставим на всякий, но менее безопасно
     volumes:
       - postgres_data:/var/lib/postgresql/data
     ports:
@@ -67,7 +75,8 @@ services:
       db:
         condition: service_healthy
     environment:
-        DATABASE_URL: postgresql://postgres:samlink@db:5432/bowls
+      DATABASE_URL: postgresql://postgres:samlink@db:5432/bowls
+      PYTHONUNBUFFERED: 1
     volumes:
       - ./backend/app:/app
     ports:
@@ -75,8 +84,6 @@ services:
     command: >
       sh -c "sleep 10 && python main.py"
     restart: unless-stopped
-    stdin_open: true
-    tty: true
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
       interval: 30s
