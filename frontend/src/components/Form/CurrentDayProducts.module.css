@@ -1,0 +1,68 @@
+.currentDayProductBlock {
+  flex: 1;
+  border-radius: 8px;
+  border: 1px solid #dcdcdc;
+  padding: 0.6em 1.2em;
+}
+.currentDayProdHeader {
+  border-bottom: 1px solid #dcdcdc;
+  display: flex;
+  justify-content: center;
+}
+.currentDayProdHeader h2 {
+  margin-bottom: 5px;
+  font-size: 1.2em;
+  font-weight: 600;
+}
+.currentDayProductBlock ul {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5px;
+  gap: 3px;
+}
+.currentDayProductBlock ul li {
+    display: flex;
+    align-items: center;
+    color: #6e6e6e;
+    gap: 3px;
+}
+.currentDayProductBlock ul li span{
+}
+.btnCurrentProductDel {
+    position: relative;
+    background-color: transparent;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10px;
+    height: 10px;
+    cursor: pointer;
+    outline: none;
+    opacity: .5;
+}
+.btnCurrentProductDel:after {
+    content: '';
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1px;
+    height: 6px;
+    background-color: #ae4646;
+    rotate: 45deg;
+}
+.btnCurrentProductDel:before {
+    content: '';
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1px;
+    height: 6px;
+    background-color: #ae4646;
+    rotate: 135deg;
+}
+.currentDayProductBlock ul li:hover .btnCurrentProductDel{
+    opacity: 1;
+}

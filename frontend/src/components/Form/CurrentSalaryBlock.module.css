@@ -1,0 +1,43 @@
+.salaryBlock {
+  flex: 1;
+  border-radius: 8px;
+  border: 1px solid #dcdcdc;
+  padding: 0.6em 1.2em;
+}
+.salaryHeader {
+  display: flex;
+  justify-content: center;
+
+  border-bottom: 1px solid #dcdcdc;
+}
+.salaryHeader h2 {
+  margin-bottom: 5px;
+  font-size: 1.2em;
+  font-weight: 600;
+}
+.salaryContent {
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  padding-top: 20px;
+}
+.salaryMonth,
+.salaryToday {
+  display: flex;
+  gap: 5px;
+  flex-direction: column;
+}
+.salaryMonth h3 {
+  font-size: 1.1em;
+  font-weight: 600;
+}
+.salaryMonth span {
+}
+.salaryToday {
+}
+.salaryToday h4 {
+  font-size: 1.1em;
+  font-weight: 600;
+}
+.salaryToday span {
+}

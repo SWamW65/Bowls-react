@@ -6,12 +6,12 @@ logger = logging.getLogger(__name__)
 from datetime import datetime, date
 from sqlalchemy import extract, func
 
-from fastapi import APIRouter
+from fastapi import APIRouter, Path
 from fastapi.params import Depends
 from sqlalchemy.orm import Session
 
 from database import get_db
-from models import ProductResponse, ProductCreate, DailySummeryResponse
+from models import ProductResponse, ProductCreate, DailySummeryResponse, CurrentDailyProductResponse
 from tables import ProductDB
 
 from sqlalchemy.exc import SQLAlchemyError
@@ -93,4 +93,46 @@ def product_day_get(selected_date: date, db: Session = Depends(get_db)):
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail="Ошибка получения данных из базы данных"
+        )
+
+@router.get("/get-only-product-for-day", response_model=List[CurrentDailyProductResponse])
+def only_product_day_get(db: Session = Depends(get_db)):
+    try:
+        today = date.today()
+        products = db.query(ProductDB.id, ProductDB.date, ProductDB.name).filter(
+            ProductDB.date == today
+        ).order_by(
+            ProductDB.id.desc()
+        ).all()
+
+        return products
+
+    except SQLAlchemyError as e:
+        logger.error(f"Ошибка базы данных: {str(e)}")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Ошибка получения данных из базы данных"
+        )
+
+@router.delete("/delete-product-current-day/{id}", status_code=status.HTTP_204_NO_CONTENT)
+def delete_product_current_day(
+        id: int = Path(..., gt=0),
+        db: Session = Depends(get_db)
+):
+    try:
+        db_product = db.query(ProductDB).get(id)
+        if not db_product:
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND,
+                detail="Продукт не найден"
+            )
+
+        db.query(ProductDB).filter(ProductDB.id == id).delete()
+        db.commit()
+
+    except Exception as e:
+        db.rollback()
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=f"Ошибка удаления продукта: {str(e)}"
         )

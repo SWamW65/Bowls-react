@@ -20,6 +20,11 @@ class DailySummeryResponse(BaseModel):
     total_quantity: int
     total_amount: float
 
+class CurrentDailyProductResponse(BaseModel):
+    id: int
+    name: str
+    date: date
+
 
 # class ProductCreate(BaseModel):
 #     product_name: str

@@ -1,5 +1,6 @@
-import styles from "./CurrentDayProducts.module.css";
+import styles from "./CurrentSalaryBlock.module.css";
 import { useState } from "react";
+
 export default function CurrentSalaryBlock() {
   return (
     <div className={styles.salaryBlock}>
@@ -9,11 +10,11 @@ export default function CurrentSalaryBlock() {
       <div className={styles.salaryContent}>
         <div className={styles.salaryMonth}>
           <h3>За месяц:</h3>
-          <span> руб.</span>
+          <span>29500 руб.</span>
         </div>
         <div className={styles.salaryToday}>
           <h4>За сегодня</h4>
-          <span> руб.</span>
+          <span>3440 руб.</span>
         </div>
       </div>
     </div>

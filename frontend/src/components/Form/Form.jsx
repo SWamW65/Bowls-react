@@ -1,5 +1,7 @@
 import { useState } from "react";
 import styles from "./Form.module.css";
+import CurrentSalaryBlock from "./CurrentSalaryBlock.jsx";
+import CurrentDayProducts from "./CurrentDayProducts.jsx";
 
 export default function Form() {
   const [formData, setFormData] = useState({
@@ -10,6 +12,7 @@ export default function Form() {
   });
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  const [refreshTrigger, setRefreshTrigger] = useState(0);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -41,7 +44,11 @@ export default function Form() {
         price: "",
         quantity: "",
         name: "",
+        date: new Date().toISOString().split("T")[0],
       });
+
+      setRefreshTrigger(prev => prev + 1);
+
     } catch (error) {
       console.error("Ошибка:", error);
       setError(error.message);
@@ -50,9 +57,10 @@ export default function Form() {
     }
   };
 
+
   return (
-    <section>
-      <div className={styles.currentSalaryBlock}></div>
+    <section className={styles.formBlock}>
+      <CurrentSalaryBlock />
       <form
         action="/submit"
         method="post"
@@ -93,6 +101,7 @@ export default function Form() {
           {isLoading ? "Отправка..." : "Отправить"}
         </button>
       </form>
+      <CurrentDayProducts refreshTrigger={refreshTrigger} />
     </section>
   );
 }
