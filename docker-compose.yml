@@ -51,7 +51,7 @@ services:
       - bowls-react_network
 
   pgadmin:
-    image: dpage/pgadmin4:latest
+    build: ./pgadmin
     container_name: bowls-react_pgadmin
     environment:
       PGADMIN_DEFAULT_EMAIL: admin@bowls.com
@@ -59,7 +59,7 @@ services:
     volumes:
       - pgadmin_data:/var/lib/pgadmin
     ports:
-      - "8081:80" # Используем свободный порт 8081
+      - "8081:80"
     restart: unless-stopped
     networks:
       - bowls-react_network

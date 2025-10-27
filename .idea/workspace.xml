@@ -4,13 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8788d325-0635-47a6-be54-0ae42518f585" name="Changes" comment="1) Доработал с дипсиком эндпойнт для получения данных по всем продуктам за день&#10;2) Также с дипсиком написали блок DayDetailModal чтобы получать данные в модальное окно из эндпойнта из пункта 1&#10;3) Дрписал стили везде&#10;Вроде все работает четко&#10;_________________&#10;В планах сделать всплывающие уведомления сверху, о произведенных действиях типа успешной отправки данных.&#10;Так же сделать отдельное поле сбоку справа о внесенных продуктах на текущий день.&#10;! Нужно сделать итог внизу под таблицей сколько вышло за месяц по деньгам">
+    <list default="true" id="8788d325-0635-47a6-be54-0ae42518f585" name="Changes" comment="Переделал docker-compose.yml и логирование&#10;теперь все volumes корректно и сразу загружаются в Docker Desktop&#10;Также стал запускаться pgadmin, изменил порт на котором он запускался">
+      <change afterPath="$PROJECT_DIR$/pgadmin/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/app/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/requirements.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nginx/nginx.conf" beforeDir="false" afterPath="$PROJECT_DIR$/nginx/nginx.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,10 +17,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Dockerfile" />
         <option value="JavaScript File" />
         <option value="JSX File" />
         <option value="CSS File" />
+        <option value="Dockerfile" />
       </list>
     </option>
   </component>
@@ -72,29 +69,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Docker.docker-compose.yml.backend: Развертывание Compose.executor": "Run",
-    "Docker.docker-compose.yml.pgadmin: Развертывание Compose.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "origin",
-    "last_opened_file_path": "C:/Users/samwi/Downloads/Plugins PyCharm/DeepSeek-Developer-5.5.3.zip",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.stylelint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.stylelint": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "prettierjs.PrettierConfiguration.Package": "C:\\itprojects\\bowls\\bowls-react\\node_modules\\prettier",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\PyCharm 2024.2.3\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Docker.docker-compose.yml.backend: Развертывание Compose.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yml.pgadmin: Развертывание Compose.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;origin&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/samwi/Downloads/Plugins PyCharm/DeepSeek-Developer-5.5.3.zip&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.stylelint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.stylelint&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\itprojects\\bowls\\bowls-react\\node_modules\\prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\PyCharm 2024.2.3\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\itprojects\bowls\bowls-react\frontend\src\components\Report" />
@@ -216,7 +213,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761234529759</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Переделал docker-compose.yml и логирование&#10;теперь все volumes корректно и сразу загружаются в Docker Desktop&#10;Также стал запускаться pgadmin, изменил порт на котором он запускался">
+      <option name="closed" value="true" />
+      <created>1761577490156</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1761577490156</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -230,6 +235,7 @@
     <MESSAGE value="1) Сделал рендер полей отправки данных и кнопку.&#10;2) Данные отправляются на сервер&#10;3) Настроил прокси в vite.config, потому что запросы отправлялись не на порт бэкенда а на самого себя." />
     <MESSAGE value="1) Сделал роутер &#10;2) Данные рендерятся с таблицы как и раньше&#10;3) Сделал чтоб форма (&lt;Form /&gt;) грузилась при открытии страницы по умолчанию&#10;4) Перекинул стили из проекта чистого JS&#10;5) Настроил меню в шапке&#10;6) Написал запрос такой же как в JS только под реакт (с помощью DeepSeek, потому что сам нихуя не понимаю)&#10;7) Написал еще один эндпойнт для поручения данных за день, но написал неправильно потому что нихуя не понимаю." />
     <MESSAGE value="1) Доработал с дипсиком эндпойнт для получения данных по всем продуктам за день&#10;2) Также с дипсиком написали блок DayDetailModal чтобы получать данные в модальное окно из эндпойнта из пункта 1&#10;3) Дрписал стили везде&#10;Вроде все работает четко&#10;_________________&#10;В планах сделать всплывающие уведомления сверху, о произведенных действиях типа успешной отправки данных.&#10;Так же сделать отдельное поле сбоку справа о внесенных продуктах на текущий день.&#10;! Нужно сделать итог внизу под таблицей сколько вышло за месяц по деньгам" />
-    <option name="LAST_COMMIT_MESSAGE" value="1) Доработал с дипсиком эндпойнт для получения данных по всем продуктам за день&#10;2) Также с дипсиком написали блок DayDetailModal чтобы получать данные в модальное окно из эндпойнта из пункта 1&#10;3) Дрписал стили везде&#10;Вроде все работает четко&#10;_________________&#10;В планах сделать всплывающие уведомления сверху, о произведенных действиях типа успешной отправки данных.&#10;Так же сделать отдельное поле сбоку справа о внесенных продуктах на текущий день.&#10;! Нужно сделать итог внизу под таблицей сколько вышло за месяц по деньгам" />
+    <MESSAGE value="Переделал docker-compose.yml и логирование&#10;теперь все volumes корректно и сразу загружаются в Docker Desktop&#10;Также стал запускаться pgadmin, изменил порт на котором он запускался" />
+    <option name="LAST_COMMIT_MESSAGE" value="Переделал docker-compose.yml и логирование&#10;теперь все volumes корректно и сразу загружаются в Docker Desktop&#10;Также стал запускаться pgadmin, изменил порт на котором он запускался" />
   </component>
 </project>
