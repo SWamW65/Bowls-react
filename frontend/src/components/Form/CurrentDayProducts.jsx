@@ -1,7 +1,7 @@
 import styles from "./CurrentDayProducts.module.css";
 import { useState, useEffect } from "react";
 
-export default function CurrentDayProducts({ refreshTrigger}) {
+export default function CurrentDayProducts({ refreshTrigger, onDataChange }) {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -20,7 +20,6 @@ export default function CurrentDayProducts({ refreshTrigger}) {
       setIsLoading(false);
     }
   };
-
   const deleteProductsOnlyCurrentDay = async (productId) => {
       setIsLoading(true);
       try {
@@ -30,6 +29,10 @@ export default function CurrentDayProducts({ refreshTrigger}) {
           if (!response.ok) throw new Error('Ошибка удаления изделия');
 
           await loadingProductsOnlyCurrentDay();
+
+        if (onDataChange) {
+            onDataChange();
+        }
       } catch (error) {
           console.error('Ошибка:', error);
       } finally {

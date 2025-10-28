@@ -11,7 +11,8 @@ from fastapi.params import Depends
 from sqlalchemy.orm import Session
 
 from database import get_db
-from models import ProductResponse, ProductCreate, DailySummeryResponse, CurrentDailyProductResponse
+from models import ProductResponse, ProductCreate, DailySummeryResponse, CurrentDailyProductResponse, \
+    CurrentSalaryResponse
 from tables import ProductDB
 
 from sqlalchemy.exc import SQLAlchemyError
@@ -27,6 +28,7 @@ async def health_check():
         status_code=200
     )
 
+# ОТПРАВКА ИЗДЕЛИЙ НА ГЛАВНОЙ
 @router.post("/submit", response_model=ProductResponse)
 async def send_product(product: ProductCreate, db: Session = Depends(get_db)):
     try:
@@ -50,7 +52,8 @@ async def send_product(product: ProductCreate, db: Session = Depends(get_db)):
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail="Ошибка добавления продукта в базу данныхы"
         )
-        
+
+# ЗАГРУЗКА ДАННЫХ ЗА ТЕКУЩИЙ МЕСЯЦ В РАЗДЕЛЕ ОБЩИЙ ПОДЧСЕТ
 @router.get("/get-current-month", response_model=List[DailySummeryResponse])
 def product_month_get(db: Session = Depends(get_db)):
     today = datetime.now()
@@ -77,6 +80,7 @@ def product_month_get(db: Session = Depends(get_db)):
 
     return result
 
+# ЗАГРУЗКА ДАННЫХ ЗА ДЕНЬ ДЕТАЛЬНО ПО ДНЮ
 @router.get("/get-for-day/{selected_date}", response_model=List[ProductResponse])
 def product_day_get(selected_date: date, db: Session = Depends(get_db)):
     try:
@@ -95,6 +99,7 @@ def product_day_get(selected_date: date, db: Session = Depends(get_db)):
             detail="Ошибка получения данных из базы данных"
         )
 
+# ЗАГРУЗКА ДАННЫХ В КОМПОНЕНТ CurrentDayProducts ДЛЯ ПОЛУЧЕНИЯ ИЗДЕЛИЙ ЗА ЭТОТ ДЕНЬ НА ГЛАВНОЙ
 @router.get("/get-only-product-for-day", response_model=List[CurrentDailyProductResponse])
 def only_product_day_get(db: Session = Depends(get_db)):
     try:
@@ -114,6 +119,7 @@ def only_product_day_get(db: Session = Depends(get_db)):
             detail="Ошибка получения данных из базы данных"
         )
 
+# УДАЛЕНИЕ ИЗДЕЛИЙ ИЗ БЛОКА CurrentDayProducts
 @router.delete("/delete-product-current-day/{id}", status_code=status.HTTP_204_NO_CONTENT)
 def delete_product_current_day(
         id: int = Path(..., gt=0),
@@ -135,4 +141,42 @@ def delete_product_current_day(
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail=f"Ошибка удаления продукта: {str(e)}"
+        )
+
+# ЗАГРУЗКА ДАННЫХ В КОМПОНЕНТ CurrentSalaryBlock
+@router.get("/get-current-salary", response_model=CurrentSalaryResponse)
+def current_salary(db: Session = Depends(get_db)):
+    try:
+        today = date.today()
+        first_day_of_month = date(today.year, today.month, 1)
+
+        # Сумма за текущий месяц
+        month_result = (db.query(
+            func.sum(ProductDB.price * ProductDB.quantity).label('month_total')
+        ).filter(
+    extract('year', ProductDB.date) == today.year,
+            extract('month', ProductDB.date) == today.month
+        ).first())
+
+        month_total = month_result.month_total or 0.0
+
+        # Сумма за сегодня
+        total_result = (db.query(
+            func.sum(ProductDB.price * ProductDB.quantity).label('today_total')
+        ).filter(
+            ProductDB.date == today
+        ).first())
+
+        today_total = total_result.today_total or 0.0
+
+        return CurrentSalaryResponse(
+            current_month=first_day_of_month,
+            month_total=round(month_total, 2),
+            today_total=round(today_total, 2)
+        )
+    except SQLAlchemyError as e:
+        logger.error(f"Ошибка базы данных: {str(e)}")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Ошибка получения данных о зарплате"
         )

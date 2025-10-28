@@ -4,18 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8788d325-0635-47a6-be54-0ae42518f585" name="Changes" comment="1) Создал файлы для компонентов Текущей зп и Изделий за сегодня.&#10;2) Сверстал пока скелет HTML компонента текущей зп">
-      <change beforePath="$PROJECT_DIR$/.idea/prettier.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/prettier.xml" afterDir="false" />
+    <list default="true" id="8788d325-0635-47a6-be54-0ae42518f585" name="Changes" comment="1) Сверстал Блоки по CurrentDayProducts.jsx и CurrentSalaryBlock.jsx&#10;2) Написал endpoint для выгрузки и удаления продуктов в CurrentDayProducts.module.css">
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/hooks/useDateFormatter.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/app/router.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/router.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/Form/CurrentDayProducts.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Form/CurrentDayProducts.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Form/CurrentDayProducts.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Form/CurrentDayProducts.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/Form/CurrentSalaryBlock.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Form/CurrentSalaryBlock.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Form/CurrentSalaryBlock.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Form/CurrentSalaryBlock.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/Form/Form.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Form/Form.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Form/Form.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Form/Form.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/css/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/css/App.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,8 +23,8 @@
       <list>
         <option value="JavaScript File" />
         <option value="Dockerfile" />
-        <option value="JSX File" />
         <option value="CSS File" />
+        <option value="JSX File" />
       </list>
     </option>
   </component>
@@ -193,7 +189,7 @@
       <workItem from="1761567997539" duration="1806000" />
       <workItem from="1761596623591" duration="16000" />
       <workItem from="1761596647837" duration="64000" />
-      <workItem from="1761596726718" duration="6633000" />
+      <workItem from="1761596726718" duration="17529000" />
     </task>
     <task id="LOCAL-00001" summary="1) Сделал рендер полей отправки данных и кнопку.&#10;2) Данные отправляются на сервер&#10;3) Настроил прокси в vite.config, потому что запросы отправлялись не на порт бэкенда а на самого себя.">
       <option name="closed" value="true" />
@@ -251,7 +247,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761581906046</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="1) Сверстал Блоки по CurrentDayProducts.jsx и CurrentSalaryBlock.jsx&#10;2) Написал endpoint для выгрузки и удаления продуктов в CurrentDayProducts.module.css">
+      <option name="closed" value="true" />
+      <created>1761603635259</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1761603635259</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -268,6 +272,7 @@
     <MESSAGE value="Переделал docker-compose.yml и логирование&#10;теперь все volumes корректно и сразу загружаются в Docker Desktop&#10;Также стал запускаться pgadmin, изменил порт на котором он запускался" />
     <MESSAGE value="Убрал предупреждение при запуске проекта, о старых пакетах." />
     <MESSAGE value="1) Создал файлы для компонентов Текущей зп и Изделий за сегодня.&#10;2) Сверстал пока скелет HTML компонента текущей зп" />
-    <option name="LAST_COMMIT_MESSAGE" value="1) Создал файлы для компонентов Текущей зп и Изделий за сегодня.&#10;2) Сверстал пока скелет HTML компонента текущей зп" />
+    <MESSAGE value="1) Сверстал Блоки по CurrentDayProducts.jsx и CurrentSalaryBlock.jsx&#10;2) Написал endpoint для выгрузки и удаления продуктов в CurrentDayProducts.module.css" />
+    <option name="LAST_COMMIT_MESSAGE" value="1) Сверстал Блоки по CurrentDayProducts.jsx и CurrentSalaryBlock.jsx&#10;2) Написал endpoint для выгрузки и удаления продуктов в CurrentDayProducts.module.css" />
   </component>
 </project>

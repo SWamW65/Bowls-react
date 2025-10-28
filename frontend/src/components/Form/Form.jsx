@@ -46,8 +46,8 @@ export default function Form() {
         name: "",
         date: new Date().toISOString().split("T")[0],
       });
-
-      setRefreshTrigger(prev => prev + 1);
+      
+      refreshData();
 
     } catch (error) {
       console.error("Ошибка:", error);
@@ -57,10 +57,14 @@ export default function Form() {
     }
   };
 
+  const refreshData = () => {
+        setRefreshTrigger(prev => prev + 1);
+    };
+
 
   return (
     <section className={styles.formBlock}>
-      <CurrentSalaryBlock />
+      <CurrentSalaryBlock refreshTrigger={refreshTrigger} />
       <form
         action="/submit"
         method="post"
@@ -101,7 +105,7 @@ export default function Form() {
           {isLoading ? "Отправка..." : "Отправить"}
         </button>
       </form>
-      <CurrentDayProducts refreshTrigger={refreshTrigger} />
+      <CurrentDayProducts refreshTrigger={refreshTrigger} onDataChange={refreshData} />
     </section>
   );
 }

@@ -25,6 +25,10 @@ class CurrentDailyProductResponse(BaseModel):
     name: str
     date: date
 
+class CurrentSalaryResponse(BaseModel):
+    current_month: date  # Первый день текущего месяца
+    month_total: float   # Сумма за месяц
+    today_total: float   # Сумма за сегодня
 
 # class ProductCreate(BaseModel):
 #     product_name: str
