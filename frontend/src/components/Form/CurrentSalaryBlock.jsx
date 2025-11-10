@@ -1,6 +1,6 @@
 import styles from "./CurrentSalaryBlock.module.css";
 import { useState, useEffect } from "react";
-import useDateFormatter from '../hooks/useDateFormatter.jsx';
+import useDateFormatter from '../../hooks/useDateFormatter.jsx';
 
 export default function CurrentSalaryBlock({ refreshTrigger }) {
     const [salaryData, setSalaryData] = useState({

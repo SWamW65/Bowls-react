@@ -6,13 +6,13 @@
   gap: 20px;
 }
 /*Form*/
-.formsubmit {
+.formSubmit {
   min-width: 250px;
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
-.formsubmit input {
+.formSubmit input {
   border-radius: 8px;
   border: 1px solid #dcdcdc;
   padding: 0.6em 1.2em;
@@ -20,7 +20,7 @@
   font-weight: 500;
   font-family: inherit;
 }
-.submitbtn {
+.submitBtn {
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
@@ -32,6 +32,6 @@
   cursor: pointer;
   transition: all 0.5s;
 }
-.submitbtn:hover {
-  opacity: 0.3;
+.submitBtn:hover {
+  background-color: #7a81e6;
 }

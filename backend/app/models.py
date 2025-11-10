@@ -1,7 +1,8 @@
+from typing import List
 from pydantic import BaseModel, conint
 from datetime import date
 
-
+# ОТПРАВКА ОТЧЕТА ПО ИЗДЕЛИЯМ ЗА ДЕНЬ
 class ProductCreate(BaseModel):
     name: str
     price: float
@@ -30,33 +31,9 @@ class CurrentSalaryResponse(BaseModel):
     month_total: float   # Сумма за месяц
     today_total: float   # Сумма за сегодня
 
-# class ProductCreate(BaseModel):
-#     product_name: str
-#
-# class PriceCreate(BaseModel):
-#     product_id: int
-#     price_value: Decimal
-#     valid_from: date
-#     valid_to: date | None = None
-#
-# class ProductionEntryCreate(BaseModel):
-#     product_id: int
-#     quantity: conint(gt=0)
-#     entry_date: date = date.today()
-#
-# class Product(ProductCreate):
-#     product_id: int
-#     class Config:
-#         from_attributes = True
-#
-# class Price(PriceCreate):
-#     price_id: int
-#     class Config:
-#         from_attributes = True
-#
-# class ProductionEntry(ProductionEntryCreate):
-#     entry_id: int
-#     class Config:
-#         from_attributes = True
-#
-#
+class MonthYearResponse(BaseModel):
+    months: List[date]
+    years: List[int]
+    current_month: date
+    current_year: int
+

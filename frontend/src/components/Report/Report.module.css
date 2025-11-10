@@ -1,5 +1,5 @@
 
-.reportcontainer {
+.reportContainer {
     width: 100%;
     padding: 5px 0 20px 0;
     display: flex;
@@ -46,6 +46,9 @@
 }
 .reportContent thead tr {
     color: #555;
+}
+.reportContent table thead th {
+    padding-bottom: 5px;
 }
 .reportContent tbody tr:nth-child(even) {
     background-color: #f1f1f1;

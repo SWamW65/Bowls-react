@@ -4,14 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8788d325-0635-47a6-be54-0ae42518f585" name="Changes" comment="1) Сверстал Блоки по CurrentDayProducts.jsx и CurrentSalaryBlock.jsx&#10;2) Написал endpoint для выгрузки и удаления продуктов в CurrentDayProducts.module.css">
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/hooks/useDateFormatter.jsx" afterDir="false" />
+    <list default="true" id="8788d325-0635-47a6-be54-0ae42518f585" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/Report/CalendarMenu.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/_____27_10_2025__16_10__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/_____27_10_2025__16_12__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Несохранённые_изменения_перед_Переключение_от_27_10_2025,_16_10_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Несохранённые_изменения_перед_Переключение_от_27_10_2025,_16_12_[Changes]/shelved.patch" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/app/router.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/router.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Form/CurrentDayProducts.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Form/CurrentDayProducts.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/Form/CurrentSalaryBlock.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Form/CurrentSalaryBlock.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/Form/Form.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Form/Form.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Form/Form.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Form/Form.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Report/Report.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Report/Report.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Report/Report.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Report/Report.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/hooks/useDateFormatter.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/hooks/useDateFormatter.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,8 +35,8 @@
       <list>
         <option value="JavaScript File" />
         <option value="Dockerfile" />
-        <option value="CSS File" />
         <option value="JSX File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -73,32 +85,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Docker.docker-compose.yml.backend: Развертывание Compose.executor": "Run",
-    "Docker.docker-compose.yml.pgadmin: Развертывание Compose.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "origin",
-    "last_opened_file_path": "C:/Users/samwi/Downloads/Plugins PyCharm/DeepSeek-Developer-5.5.3.zip",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.stylelint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.stylelint": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "prettierjs.PrettierConfiguration.Package": "C:\\itprojects\\bowls\\bowls-react\\node_modules\\prettier",
-    "run.code.analysis.last.selected.profile": "aDefault",
-    "settings.editor.selected.configurable": "settings.javascript.prettier",
-    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\PyCharm 2024.2.3\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Docker.docker-compose.yml.backend: Развертывание Compose.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yml.pgadmin: Развертывание Compose.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;create-calendar-menu&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/samwi/Downloads/Plugins PyCharm/DeepSeek-Developer-5.5.3.zip&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.stylelint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.stylelint&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\itprojects\\bowls\\bowls-react\\node_modules\\prettier&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;aDefault&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.javascript.prettier&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\PyCharm 2025.2.1.1\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\itprojects\bowls\bowls-react\frontend\src" />
       <recent name="C:\itprojects\bowls\bowls-react\frontend\src\components\Report" />
       <recent name="C:\itprojects\bowls\bowls-react\frontend\src\css" />
     </key>
@@ -189,7 +202,14 @@
       <workItem from="1761567997539" duration="1806000" />
       <workItem from="1761596623591" duration="16000" />
       <workItem from="1761596647837" duration="64000" />
-      <workItem from="1761596726718" duration="17529000" />
+      <workItem from="1761596726718" duration="18040000" />
+      <workItem from="1761614941622" duration="113000" />
+      <workItem from="1761683148902" duration="527000" />
+      <workItem from="1761951730732" duration="354000" />
+      <workItem from="1762184868979" duration="13045000" />
+      <workItem from="1762547718745" duration="6233000" />
+      <workItem from="1762635481255" duration="4390000" />
+      <workItem from="1762811091475" duration="3393000" />
     </task>
     <task id="LOCAL-00001" summary="1) Сделал рендер полей отправки данных и кнопку.&#10;2) Данные отправляются на сервер&#10;3) Настроил прокси в vite.config, потому что запросы отправлялись не на порт бэкенда а на самого себя.">
       <option name="closed" value="true" />
@@ -255,7 +275,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761603635259</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="1) Написал эндпойнты для CurrentSalary&#10;2) Обновление данных в CurrentSalaryBlock.jsx после удаления данных в CurrentDayProducts.jsx&#10;3) Внедрил хук useDateFormatter.jsx в CurrentSalaryBlock.jsx, но че-то не понятно как это до конца работает. Но все работает">
+      <option name="closed" value="true" />
+      <created>1761614575468</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1761614575468</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -265,6 +293,17 @@
     <option featureType="com.intellij.fileTypeFactory" implementationName=".env" />
     <option featureType="com.intellij.fileTypeFactory" implementationName="nginx.conf" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="1) Сделал рендер полей отправки данных и кнопку.&#10;2) Данные отправляются на сервер&#10;3) Настроил прокси в vite.config, потому что запросы отправлялись не на порт бэкенда а на самого себя." />
     <MESSAGE value="1) Сделал роутер &#10;2) Данные рендерятся с таблицы как и раньше&#10;3) Сделал чтоб форма (&lt;Form /&gt;) грузилась при открытии страницы по умолчанию&#10;4) Перекинул стили из проекта чистого JS&#10;5) Настроил меню в шапке&#10;6) Написал запрос такой же как в JS только под реакт (с помощью DeepSeek, потому что сам нихуя не понимаю)&#10;7) Написал еще один эндпойнт для поручения данных за день, но написал неправильно потому что нихуя не понимаю." />
@@ -273,6 +312,7 @@
     <MESSAGE value="Убрал предупреждение при запуске проекта, о старых пакетах." />
     <MESSAGE value="1) Создал файлы для компонентов Текущей зп и Изделий за сегодня.&#10;2) Сверстал пока скелет HTML компонента текущей зп" />
     <MESSAGE value="1) Сверстал Блоки по CurrentDayProducts.jsx и CurrentSalaryBlock.jsx&#10;2) Написал endpoint для выгрузки и удаления продуктов в CurrentDayProducts.module.css" />
-    <option name="LAST_COMMIT_MESSAGE" value="1) Сверстал Блоки по CurrentDayProducts.jsx и CurrentSalaryBlock.jsx&#10;2) Написал endpoint для выгрузки и удаления продуктов в CurrentDayProducts.module.css" />
+    <MESSAGE value="1) Написал эндпойнты для CurrentSalary&#10;2) Обновление данных в CurrentSalaryBlock.jsx после удаления данных в CurrentDayProducts.jsx&#10;3) Внедрил хук useDateFormatter.jsx в CurrentSalaryBlock.jsx, но че-то не понятно как это до конца работает. Но все работает" />
+    <option name="LAST_COMMIT_MESSAGE" value="1) Написал эндпойнты для CurrentSalary&#10;2) Обновление данных в CurrentSalaryBlock.jsx после удаления данных в CurrentDayProducts.jsx&#10;3) Внедрил хук useDateFormatter.jsx в CurrentSalaryBlock.jsx, но че-то не понятно как это до конца работает. Но все работает" />
   </component>
 </project>
