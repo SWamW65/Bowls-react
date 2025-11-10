@@ -1,0 +1,66 @@
+# PyCharm IDE
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+venv/
+env/
+.venv/
+
+# Environment variables
+.env
+.venv
+.env.local
+.env.production
+
+# Logs
+*.log
+logs/
+
+# Docker
+Dockerfile.dev
+Dockerfile.prod
+docker-compose.override.yml
+.docker/
+
+# Netlify
+.netlify/
+dist/
+build/          # если это не требуется для Netlify
+.functions/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# Testing
+.coverage
+.pytest_cache/
