@@ -1,23 +1,19 @@
 import logging
 from typing import List
-
-logger = logging.getLogger(__name__)
-
 from datetime import datetime, date
 from sqlalchemy import extract, func
-
 from fastapi import APIRouter, Path
 from fastapi.params import Depends
 from sqlalchemy.orm import Session
-
 from database import get_db
 from models import ProductResponse, ProductCreate, DailySummeryResponse, CurrentDailyProductResponse, \
-    CurrentSalaryResponse
+    CurrentSalaryResponse, MonthYearResponse
 from tables import ProductDB
-
 from sqlalchemy.exc import SQLAlchemyError
 from fastapi import HTTPException, status
 from fastapi.responses import JSONResponse
+
+logger = logging.getLogger(__name__)
 
 router = APIRouter(prefix="/api")
 
@@ -179,4 +175,85 @@ def current_salary(db: Session = Depends(get_db)):
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail="Ошибка получения данных о зарплате"
+        )
+
+
+# ВЫГРУЖАЕМ МЕСЯЦЫ И ГОДЫ ЗА ТЕКУЩИЙ ГОД В CalendarMenu.jsx
+@router.get("/get-months-for-menu", response_model=MonthYearResponse)
+def months_for_menu(db: Session = Depends(get_db)):
+    try:
+        today = date.today()
+        current_year = today.year
+
+        # Получаем уникальные месяцы из базы данных
+        months_query = (db.query(
+            func.date_trunc('month', ProductDB.date).label('month')
+        ).filter(
+            extract('year', ProductDB.date) == current_year
+        ).distinct().all())
+
+        # Получаем уникальные годы из базы данных
+        years_query = (db.query(
+            extract('year', ProductDB.date).label('year')
+        ).distinct().all())
+
+        # Форматируем месяцы (первый день каждого месяца)
+        months = [row.month for row in months_query]
+
+        # Форматируем годы
+        years = [int(row.year) for row in years_query]
+
+        # Текущий месяц (первый день)
+        current_month = date(today.year, today.month, 1)
+
+        return MonthYearResponse(
+            months=months,
+            years=years,
+            current_month=current_month,
+            current_year=current_year
+        )
+
+    except SQLAlchemyError as e:
+        logger.error(f"Ошибка базы данных: {str(e)}")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Ошибка получения данных для меню"
+        )
+
+# ЭНДПОИНТ ДЛЯ ЗАГРУЗКИ ДАННЫХ ПО ВЫБРАННОМУ МЕСЯЦУ И ГОДУ
+@router.get("/get-products-by-month", response_model=List[DailySummeryResponse])
+def get_products_by_month(
+        year: int,
+        month: int,
+        db: Session = Depends(get_db)
+):
+    try:
+        daily_summery = (db.query(
+    ProductDB.date,
+            func.sum(ProductDB.quantity).label('total_quantity'),
+            func.sum(ProductDB.price * ProductDB.quantity).label('total_amount')
+        ).filter(
+    extract('year', ProductDB.date) == year,
+            extract('month', ProductDB.date) == month
+        ).group_by(
+            ProductDB.date
+        ).order_by(
+            ProductDB.date.desc()).all())
+
+        result = [
+            DailySummeryResponse(
+                date=summary_row.date,
+                total_quantity=summary_row.total_quantity,
+                total_amount=round(summary_row.total_amount, 2)
+            )
+            for summary_row in daily_summery
+        ]
+
+        return result
+
+    except SQLAlchemyError as e:
+        logger.error(f"Ошибка базы данных: {str(e)}")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Ошибка получения данных за выбранный месяц"
         )

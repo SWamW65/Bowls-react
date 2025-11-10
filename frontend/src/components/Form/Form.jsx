@@ -68,7 +68,7 @@ export default function Form() {
       <form
         action="/submit"
         method="post"
-        className={styles.formsubmit}
+        className={styles.formSubmit}
         onSubmit={handleSubmit}
       >
         <input
@@ -101,7 +101,7 @@ export default function Form() {
           onChange={handleChange}
           value={formData.name}
         />
-        <button type="submit" className={styles.submitbtn}>
+        <button type="submit" className={styles.submitBtn}>
           {isLoading ? "Отправка..." : "Отправить"}
         </button>
       </form>

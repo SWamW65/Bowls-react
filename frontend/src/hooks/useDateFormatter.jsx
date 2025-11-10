@@ -18,5 +18,15 @@ export default function useDateFormatter() {
         }
     };
 
-    return { formatMonth };
+    const formatMonthForSelect = (dateString) => {
+        const monthName = formatMonth(dateString);
+        const year = new Date(dateString).getFullYear();
+        return { value: dateString, label: `${monthName}`};
+    };
+
+    const formatYearForSelect = (year) => {
+        return {value: year.toString(), label: year.toString()};
+    };
+
+    return { formatMonth, formatMonthForSelect, formatYearForSelect };
 }
