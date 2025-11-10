@@ -64,3 +64,5 @@ Thumbs.db
 # Testing
 .coverage
 .pytest_cache/
+
+bowls-react/node_modules/
