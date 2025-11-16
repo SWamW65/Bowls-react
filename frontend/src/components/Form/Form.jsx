@@ -64,7 +64,7 @@ export default function Form() {
 
   return (
     <section className={styles.formBlock}>
-      <CurrentSalaryBlock refreshTrigger={refreshTrigger} />
+      <CurrentSalaryBlock className={styles.CurrentSalaryBlock} refreshTrigger={refreshTrigger} />
       <form
         action="/submit"
         method="post"
@@ -105,7 +105,7 @@ export default function Form() {
           {isLoading ? "Отправка..." : "Отправить"}
         </button>
       </form>
-      <CurrentDayProducts refreshTrigger={refreshTrigger} onDataChange={refreshData} />
+      <CurrentDayProducts className={styles.CurrentDayProducts} refreshTrigger={refreshTrigger} onDataChange={refreshData} />
     </section>
   );
 }

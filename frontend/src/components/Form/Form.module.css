@@ -35,3 +35,23 @@
 .submitBtn:hover {
   background-color: #7a81e6;
 }
+@media (max-width: 575.98px) {
+    .formBlock {
+        display: grid;
+        grid-template-areas:
+            "block1 block3"
+            "block2 block2";
+        grid-auto-columns: 1fr 1fr;
+        gap: 10px;
+    }
+    .CurrentSalaryBlock {
+        grid-area: block1;
+    }
+    .formSubmit {
+        grid-area: block2;
+    }
+    .CurrentDayProducts {
+        grid-area: block3;
+    }
+
+}

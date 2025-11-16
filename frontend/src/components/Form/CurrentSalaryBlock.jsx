@@ -56,7 +56,7 @@ export default function CurrentSalaryBlock({ refreshTrigger }) {
               <span>{salaryData.month_total.toFixed(2)} руб.</span>
             </div>
             <div className={styles.salaryToday}>
-              <h4>За сегодня</h4>
+              <h3>За сегодня</h3>
               <span>{salaryData.today_total.toFixed(2)} руб.</span>
             </div>
           </div>

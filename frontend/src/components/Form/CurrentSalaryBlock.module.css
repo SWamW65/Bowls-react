@@ -27,7 +27,7 @@
   gap: 5px;
   flex-direction: column;
 }
-.salaryMonth h3 {
+.salaryContent h3 {
   font-size: 1.1em;
   font-weight: 600;
 }
@@ -35,9 +35,20 @@
 }
 .salaryToday {
 }
-.salaryToday h4 {
-  font-size: 1.1em;
-  font-weight: 600;
-}
 .salaryToday span {
+}
+@media (max-width: 575.98px) {
+    .salaryHeader h2 {
+        font-size: 1.1em;
+    }
+    .salaryContent {
+        padding-top: 10px;
+        gap: 10px;
+    }
+    .salaryContent h3 {
+        font-size: 1em;
+    }
+    .salaryContent span {
+        font-size: .9em;
+    }
 }
