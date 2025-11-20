@@ -1,0 +1,66 @@
+.loginContainer {
+    padding: 5em 0;
+}
+.loginBox {
+    width: 380px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    border-radius: 8px;
+    border: 1px solid #dcdcdc;
+    padding: 1em 1.5em;
+}
+.loginBox h2 {
+  font-size: 1.2em;
+  font-weight: 600;
+}
+.loginBox form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.inputGroup {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+
+}
+.inputGroup label {
+  font-size: .9em;
+  font-weight: 600;
+  font-family: inherit;
+}
+.loginBox input {
+  border-radius: 8px;
+  border: 1px solid #dcdcdc;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+}
+.loginBox .loginBtn {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  color: #f9f9f9;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #434343;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+.loginBox .loginBtn:hover {
+  background-color: #7a81e6;
+}
+.registerLink {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+}
+.loginBox .errorMessage {
+    color: red;
+}
