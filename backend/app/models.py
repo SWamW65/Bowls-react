@@ -2,6 +2,20 @@ from typing import List
 from pydantic import BaseModel, conint
 from datetime import date
 
+# МОДЕЛИ ДЛЯ АВТОРИЗАЦИИ
+class UserCreate(BaseModel):
+    username: str
+    email: str
+    password: str
+
+class UserLogin(BaseModel):
+    username: str
+    password: str
+
+class Token(BaseModel):
+    access_token: str
+    token_type: str
+
 # ОТПРАВКА ОТЧЕТА ПО ИЗДЕЛИЯМ ЗА ДЕНЬ
 class ProductCreate(BaseModel):
     name: str

@@ -1,6 +1,7 @@
 import styles from "./CurrentSalaryBlock.module.css";
 import { useState, useEffect } from "react";
 import useDateFormatter from '../../hooks/useDateFormatter.jsx';
+import { fetchWithAuth } from '../../utils/api';
 
 export default function CurrentSalaryBlock({ refreshTrigger }) {
     const [salaryData, setSalaryData] = useState({
@@ -19,7 +20,7 @@ export default function CurrentSalaryBlock({ refreshTrigger }) {
                 setIsLoading(true);
                 setError(null);
 
-                const response = await fetch('/api/get-current-salary');
+                const response = await fetchWithAuth('/api/get-current-salary');
 
                 if (!response.ok) throw new Error('Ошибка загрузки данных');
 

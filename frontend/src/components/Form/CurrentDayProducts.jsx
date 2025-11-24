@@ -1,5 +1,6 @@
 import styles from "./CurrentDayProducts.module.css";
 import { useState, useEffect } from "react";
+import { fetchWithAuth } from '../../utils/api';
 
 export default function CurrentDayProducts({ refreshTrigger, onDataChange }) {
   const [products, setProducts] = useState([]);
@@ -8,7 +9,7 @@ export default function CurrentDayProducts({ refreshTrigger, onDataChange }) {
   const loadingProductsOnlyCurrentDay = async () => {
     setIsLoading(true);
     try {
-      const response = await fetch("api/get-only-product-for-day", {
+      const response = await fetchWithAuth("api/get-only-product-for-day", {
         method: "GET",
       });
       if (!response.ok) throw new Error("Ошибка загрузки данных");
@@ -23,7 +24,7 @@ export default function CurrentDayProducts({ refreshTrigger, onDataChange }) {
   const deleteProductsOnlyCurrentDay = async (productId) => {
       setIsLoading(true);
       try {
-          const response = await fetch(`api/delete-product-current-day/${productId}`, {
+          const response = await fetchWithAuth(`api/delete-product-current-day/${productId}`, {
               method: 'DELETE',
           });
           if (!response.ok) throw new Error('Ошибка удаления изделия');

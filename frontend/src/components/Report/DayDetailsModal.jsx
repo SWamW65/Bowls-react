@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import styles from "./DayDetailsModal.module.css";
+import { fetchWithAuth } from '../../utils/api';
 
 export default function DayDetailsModal({ isOpen, onClose, selectedDate }) {
   const [dayDetails, setDayDetails] = useState([]);
@@ -25,7 +26,7 @@ export default function DayDetailsModal({ isOpen, onClose, selectedDate }) {
   const loadDayDetails = async (date) => {
     setIsLoading(true);
     try {
-      const response = await fetch(`/api/get-for-day/${date}`);
+      const response = await fetchWithAuth(`/api/get-for-day/${date}`);
       if (!response.ok) throw new Error("Ошибка при загрузке данных");
       const dataDay = await response.json();
       setDayDetails(dataDay);
