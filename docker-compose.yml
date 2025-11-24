@@ -78,17 +78,11 @@ services:
     command: python -u main.py
     restart: unless-stopped
     healthcheck:
-      test:
-        [
-          "CMD",
-          "python",
-          "-c",
-          "import requests; requests.get('http://localhost:8000/api/health', timeout=5).raise_for_status()",
-        ]
-      interval: 300s # Проверка раз в 5 минут
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/api/health')"]
+      interval: 300s
       timeout: 10s
-      retries: 1
-      start_period: 30s
+      retries: 3
+      start_period: 40s
     networks:
       - bowls-react_network
 

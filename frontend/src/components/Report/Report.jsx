@@ -2,6 +2,7 @@ import styles from './Report.module.css';
 import {useEffect, useState, useCallback} from "react";
 import DayDetailsModal from "./DayDetailsModal.jsx";
 import CalendarMenu from './CalendarMenu.jsx';
+import { fetchWithAuth } from '../../utils/api';
 
 export default function Report() {
     const [products, setProducts] = useState([]);
@@ -30,9 +31,9 @@ export default function Report() {
                 url = `api/get-products-by-month?year=${year}&month=${monthNumber}`;
             }
 
-            const response = await fetch(url, {
-                method: 'GET'
-            });
+            const response = await fetchWithAuth(url, {
+                    method: 'GET'
+                });
             if (!response.ok) throw new Error('Ошибка при загрузке изделий');
             const productData = await response.json();
             setProducts(productData);

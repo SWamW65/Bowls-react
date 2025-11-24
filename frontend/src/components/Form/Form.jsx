@@ -2,6 +2,7 @@ import { useState } from "react";
 import styles from "./Form.module.css";
 import CurrentSalaryBlock from "./CurrentSalaryBlock.jsx";
 import CurrentDayProducts from "./CurrentDayProducts.jsx";
+import { fetchWithAuth } from '../../utils/api';
 
 export default function Form() {
   const [formData, setFormData] = useState({
@@ -28,7 +29,7 @@ export default function Form() {
     setError("");
 
     try {
-      const response = await fetch("/api/submit", {
+      const response = await fetchWithAuth("/api/submit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),

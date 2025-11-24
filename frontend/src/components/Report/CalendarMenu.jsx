@@ -1,6 +1,7 @@
 import React, {useEffect, useState, useRef} from "react";
 import Select from "react-select";
 import useDateFormatter from "../../hooks/useDateFormatter.jsx";
+import { fetchWithAuth } from '../../utils/api';
 
 export default function CalendarMenu({onMonthYearChange}) {
     const [selectedMonth, setSelectedMonth] = useState(null);
@@ -30,12 +31,12 @@ export default function CalendarMenu({onMonthYearChange}) {
         if (initialLoadRef.current) {
             initialLoadRef.current = false;
         }
-    }, [selectedMonth, selectedMonth, onMonthYearChange]);
+    }, [selectedMonth, onMonthYearChange, selectedYear]);
 
     const fetchMonthYearData = async () => {
         try {
             setLoading(true);
-            const response = await fetch('/api/get-months-for-menu');
+            const response = await fetchWithAuth('/api/get-months-for-menu');
             if (!response.ok) {
                 throw new Error('Ошибка загрузки данных меню Select')
             }
