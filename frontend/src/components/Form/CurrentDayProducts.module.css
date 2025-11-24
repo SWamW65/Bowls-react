@@ -15,10 +15,13 @@
   font-weight: 600;
 }
 .currentDayProductBlock ul {
-  display: flex;
-  flex-direction: column;
-  margin-top: 5px;
-  gap: 3px;
+    max-height: 120px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 5px;
+    gap: 3px;
+    overflow-y: auto;
+
 }
 .currentDayProductBlock ul li {
     display: flex;
@@ -67,16 +70,20 @@
     opacity: 1;
 }
 @media (max-width: 575.98px) {
+    .currentDayProductBlock {
+        max-height: 124px;
+    }
     .currentDayProductBlock ul li {
          justify-content: space-between;
     }
     .currentDayProductBlock ul li span{
-        font-size: .9em;
+        font-size: .8em;
     }
     .currentDayProductBlock ul {
+        max-height: 80px;
         gap: 5px;
     }
     .currentDayProdHeader h2 {
-        font-size: 1em;
+        font-size: .9em;
     }
 }

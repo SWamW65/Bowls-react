@@ -157,7 +157,7 @@ def product_day_get(selected_date: date, db: Session = Depends(get_db), current_
 def only_product_day_get(db: Session = Depends(get_db), current_user: UserDB = Depends(get_current_active_user)):
     try:
         today = date.today()
-        products = db.query(ProductDB.id, ProductDB.date, ProductDB.name).filter(
+        products = db.query(ProductDB.id, ProductDB.date, ProductDB.name, ProductDB.quantity).filter(
             ProductDB.date == today,
             ProductDB.user_id == current_user.id
         ).order_by(

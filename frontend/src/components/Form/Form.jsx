@@ -76,7 +76,9 @@ export default function Form() {
           className={styles.price}
           id="price"
           name="price"
-          type="text"
+          type="tel"
+          pattern="[0-9]*"
+          inputMode="numeric"
           placeholder="Стоимость"
           disabled={isLoading}
           onChange={handleChange}
@@ -86,7 +88,9 @@ export default function Form() {
           className={styles.quantity}
           id="quantity"
           name="quantity"
-          type="text"
+          type="tel"
+          pattern="[0-9]*"
+          inputMode="numeric"
           placeholder="Количество"
           disabled={isLoading}
           onChange={handleChange}

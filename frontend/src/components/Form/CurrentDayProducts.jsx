@@ -58,7 +58,7 @@ export default function CurrentDayProducts({ refreshTrigger, onDataChange }) {
         ) : (
           products.map(product => (
               <li key={product.id}>
-                  <span>{product.name}</span>
+                  <span>{product.name} {product.quantity} шт.</span>
                   <button
                       className={styles.btnCurrentProductDel}
                       onClick={() => deleteProductsOnlyCurrentDay(product.id)}

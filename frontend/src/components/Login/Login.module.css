@@ -26,7 +26,6 @@
     justify-content: space-between;
     align-items: center;
     gap: 5px;
-
 }
 .inputGroup label {
   font-size: .9em;
@@ -75,4 +74,39 @@
 }
 .linkButton:hover {
     color: #535bf2;
+}
+@media (max-width: 575.98px) {
+    .loginContainer {
+        height: 100vh;
+        overflow: hidden;
+    }
+    .loginBox {
+        border: 0;
+        max-width: 100%;
+    }
+    .inputGroup {
+        flex-direction: column;
+        gap: 15px
+    }
+    .loginBox h2 {
+        font-size: 2em;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 1em;
+    }
+    .inputGroup label {
+        font-size: 1.5em;
+    }
+    .loginBox input {
+        width: 100%;
+    }
+    .loginBox form {
+        gap: 20px;
+    }
+}
+@media (max-width: 767px) {
+    .loginContainer {
+        height: 100vh;
+        overflow: hidden;
+    }
 }

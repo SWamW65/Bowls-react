@@ -38,6 +38,7 @@ class DailySummeryResponse(BaseModel):
 class CurrentDailyProductResponse(BaseModel):
     id: int
     name: str
+    quantity: conint(gt=0)
     date: date
 
 class CurrentSalaryResponse(BaseModel):

@@ -39,7 +39,7 @@
 }
 @media (max-width: 575.98px) {
     .salaryHeader h2 {
-        font-size: 1.1em;
+        font-size: .9em;
     }
     .salaryContent {
         padding-top: 10px;

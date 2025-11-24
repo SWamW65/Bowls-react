@@ -30,3 +30,8 @@
 .logoutBtn:hover {
     color: #535bf2;
 }
+@media (max-width: 575.98px) {
+    .headerNav ul {
+        align-items: center;
+    }
+}
