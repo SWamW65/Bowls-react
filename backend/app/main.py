@@ -8,7 +8,6 @@ import uvicorn
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     # Startup
-    init_db()
     yield
     # Shutdown
     # (можно добавить код для закрытия соединений)

@@ -69,6 +69,8 @@ services:
   backend:
     build: ./backend
     container_name: bowls-react_backend
+    env_file:
+      - .env
     environment:
       DATABASE_URL: postgresql://postgres:samlink@db:5432/bowls
     volumes:

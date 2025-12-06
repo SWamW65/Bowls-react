@@ -1,5 +1,5 @@
 from datetime import date
-from sqlalchemy import Column, Integer, String, ForeignKey, DECIMAL, Date, Float, Boolean
+from sqlalchemy import Column, Integer, String, ForeignKey, DECIMAL, Date, Float, Boolean, DateTime
 from sqlalchemy.orm import relationship
 from database import Base
 
@@ -11,6 +11,8 @@ class UserDB(Base):
     email = Column(String(100), unique=True, index=True, nullable=False)
     hashed_password = Column(String(255), nullable=False)
     is_active = Column(Boolean, default=True)
+    # reset_token = Column(String(255), nullable=True)
+    # reset_token_expires = Column(DateTime, nullable=True)
 
 class ProductDB (Base):
     __tablename__ = 'products'

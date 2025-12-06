@@ -17,7 +17,7 @@ nosetests.xml
 .history
 .DS_Store
 *.sqlite3
-.env
+../.env
 .venv
 venv/
 Dockerfile
