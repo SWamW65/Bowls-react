@@ -88,6 +88,10 @@
         flex-direction: column;
         gap: 15px
     }
+    .inputGroup label {
+        display: flex;
+        width: 100%;
+    }
     .loginBox h2 {
         font-size: 2em;
         display: flex;
