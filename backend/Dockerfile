@@ -14,9 +14,9 @@ WORKDIR /app
 
 # Копируем и устанавливаем зависимости
 COPY requirements.txt .
-RUN pip install --no-cache-dir --upgrade pip && \
-    pip install --no-cache-dir -r requirements.txt && \
-    pip install alembic
+RUN python -c "from pathlib import Path; data = Path('requirements.txt').read_bytes(); text = data.decode('utf-16') if data.startswith((b'\xff\xfe', b'\xfe\xff')) else data.decode('utf-8'); Path('/tmp/requirements.txt').write_text(text.replace('\r\n', '\n'), encoding='utf-8')" && \
+    pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir -r /tmp/requirements.txt
 
 # Копируем исходный код
 COPY app/ .
