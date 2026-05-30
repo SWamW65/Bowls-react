@@ -1,52 +1,33 @@
-# alembic/env.py (полный пример)
-
-import os
 import sys
 from logging.config import fileConfig
-from dotenv import load_dotenv
-
-from sqlalchemy import engine_from_config
-from sqlalchemy import pool
+from pathlib import Path
 
 from alembic import context
+from dotenv import load_dotenv
+from sqlalchemy import engine_from_config, pool
 
-# Загружаем .env файл из корня проекта
-env_path = os.path.join(os.path.dirname(__file__), '..', '.env')
-load_dotenv(dotenv_path=env_path)
+APP_DIR = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(APP_DIR))
 
-# Добавляем путь к папке backend
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
+load_dotenv()
 
-# Затем добавляем путь к app внутри backend
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'backend', 'app'))
-
-# Импортируем модели
-try:
-    from database import Base, DATABASE_URL
-except ImportError:
-    # Альтернативный путь импорта
-    import sys
-    sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'backend', 'app'))
-    from database import Base, DATABASE_URL
+from database import Base, DATABASE_URL
+import tables  # noqa: F401 - регистрирует SQLAlchemy-модели в Base.metadata
 
 config = context.config
 
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
-# Если DATABASE_URL импортирована напрямую
-db_url = DATABASE_URL
-# ИЛИ получаем из переменных окружения
-# db_url = os.getenv("DATABASE_URL")
-
-if not db_url:
+if not DATABASE_URL:
     raise ValueError("DATABASE_URL не установлен")
 
-config.set_main_option("sqlalchemy.url", db_url)
+config.set_main_option("sqlalchemy.url", DATABASE_URL)
 
 target_metadata = Base.metadata
 
-def run_migrations_offline():
+
+def run_migrations_offline() -> None:
     url = config.get_main_option("sqlalchemy.url")
     context.configure(
         url=url,
@@ -58,7 +39,8 @@ def run_migrations_offline():
     with context.begin_transaction():
         context.run_migrations()
 
-def run_migrations_online():
+
+def run_migrations_online() -> None:
     connectable = engine_from_config(
         config.get_section(config.config_ini_section, {}),
         prefix="sqlalchemy.",
@@ -66,13 +48,11 @@ def run_migrations_online():
     )
 
     with connectable.connect() as connection:
-        context.configure(
-            connection=connection,
-            target_metadata=target_metadata
-        )
+        context.configure(connection=connection, target_metadata=target_metadata)
 
         with context.begin_transaction():
             context.run_migrations()
+
 
 if context.is_offline_mode():
     run_migrations_offline()
